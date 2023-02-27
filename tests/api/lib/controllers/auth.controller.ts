@@ -13,4 +13,20 @@ export class AuthController {
             .send();
         return response;
     }
+
+    async signup(emailValue: string, passwordValue: string, userName: string,
+        avatar: string = '') {
+        const response = await new ApiRequest()
+            .prefixUrl("http://tasque.lol/")
+            .method("POST")
+            .url(`api/register`)
+            .body({
+                email: emailValue,
+                password: passwordValue,
+                userName,
+                avatar
+            })
+            .send();
+        return response;
+    }
 }
