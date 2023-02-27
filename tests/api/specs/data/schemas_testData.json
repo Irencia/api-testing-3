@@ -1,0 +1,23 @@
+{
+    "schema_allUsers": {
+        "type": "array",
+        "items": {
+            "type": "object",
+            "required": ["id", "avatar", "email", "userName"],
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "avatar": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "userName": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
