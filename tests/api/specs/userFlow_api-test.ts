@@ -70,6 +70,24 @@ describe("Token usage", () => {
         expect(response.body.userName).to.be.equal('NewUserName'); 
     });
 
+    it(`should return 404 error when getting user details with invalid id`, async () => {
+        let invalidUserId = 123133
+
+        let response = await users.getUserById(invalidUserId);
+
+        expect(response.statusCode, `Status Code should be 404`).to.be.equal(404);
+        expect(response.timings.phases.total, `Response time should be less than 1s`).to.be.lessThan(1000);  
+    });
+
+    it(`should return 400 error when getting user details with invalid id type`, async () => {
+        let invalidUserId = '2183821367281387213781263'
+
+        let response = await users.getUserById(invalidUserId);
+
+        expect(response.statusCode, `Status Code should be 400`).to.be.equal(400);
+        expect(response.timings.phases.total, `Response time should be less than 1s`).to.be.lessThan(1000);  
+    });
+
     it('delete user by id', async () => {
         let response = await users.deleteUserById(userId, accessToken);
         expect(response.statusCode, `Status Code should be 204`).to.be.equal(204);
